@@ -2,6 +2,7 @@
 
 from  traffic_dataset_setter import traffic_dataset_setter
 
+import sys
 import xml.sax
 import csv
 
@@ -50,9 +51,9 @@ class xmlparser(xml.sax.ContentHandler):
 
                 '''
 
-                if str(tag).lower() ==  'xml_head':
+               # if str(tag).lower() ==  'xml_head':
 
-                        print "New xml came\n\n"
+               #         print "New xml came\n\n"
 
 
                 if str(tag).lower() == 'info':
@@ -138,11 +139,16 @@ def parse(xml_file):
 
         parser.parse(xml_file)
 
-xmlname ="201503312358.xml"
+xmlname = sys.argv[1]
 lanecounter = 0
 csvname = xmlname + ".csv"
-myfile = open(csvname,'wb')
-wr = csv.writer(myfile,delimiter=";")
-newrow =  ("timestamp","vdid")
-parse(xmlname)
+try:
+    myfile = open(csvname,'wb')
+    wr = csv.writer(myfile,delimiter=";")
+    newrow =  ("timestamp","vdid")
+    parse(xmlname)
+except:
+    print "Error encountered while parsing " + xmlname
+
+
 	

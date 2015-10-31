@@ -1,0 +1,8 @@
+1)xmlparser needs the xml file as input argument in order to operate, i.e. "python xmlparser.py test.xml"
+
+2)batchparser needs the data folder as argument, i.e. "sh batchparser data".
+It uses the find command to spot every file ending in .xml in the subdirectories of the data folder and parses it.
+The output csvfiles are stored in the newly created folder csvdump. 
+If something went wrong while parsing a specific file, it should come out in the parserlog file.
+
+I hope everything runs ok. If there is a problem feel free to message me!
